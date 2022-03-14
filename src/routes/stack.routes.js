@@ -19,9 +19,9 @@ export default function StackRoutes() {
     }}>
       <Stack.Screen name="Start" component={Start} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Home" component={Home} />
+      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="ChangeData" component={ChangeData} />
+      <Stack.Screen name="ChangeData" component={ChangeData} /> */}
     </Stack.Navigator>
   );
 }

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { StatusBar } from "react-native";
-import Routes from "./src/routes";
-
+import { ThemeProvider } from "styled-components";
 import AppLoading from "expo-app-loading";
 import {
   useFonts,
@@ -10,8 +9,12 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
+import Toast from "react-native-toast-message";
 
-import UserProvider from "./src/Context/UserContext";
+import Routes from "~/routes";
+import UserProvider from "~/Context/UserContext";
+import PersonalizedToast from "~/components/Toast";
+import theme from "~/theme";
 
 export default function App() {
   try {
@@ -30,9 +33,14 @@ export default function App() {
   }
 
   return (
-    <UserProvider>
-      <StatusBar hidden={true} />
-      <Routes />
-    </UserProvider>
+    <>
+      <UserProvider>
+        <StatusBar hidden={true} />
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>
+      </UserProvider>
+      <PersonalizedToast />
+    </>
   );
 }
