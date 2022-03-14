@@ -19,7 +19,7 @@ export default function Register() {
   const formRef = useRef(null);
   const navigation = useNavigation();
 
-  function handleSubmit({ name, weight, height }) {
+  function registerUser({ name, weight, height }) {
     userSchema.isValid({ name, weight, height }).then((isValid) =>
       isValid
         ? AsyncStorage.setItem(
@@ -47,18 +47,14 @@ export default function Register() {
           Precisamos de algumas {"\n"} informações sobre você
         </TitlePage>
 
-        <ContainerUnform
-          ref={formRef}
-          placeholder="Nome"
-          onSumbmit={handleSubmit}
-        >
+        <ContainerUnform ref={formRef} onSumbmit={registerUser}>
+          <InputRegister name="Nome" type="text" />
           <InputRegister
-            name="Nome"
+            name="Peso"
             type="text"
             maxLength={5}
             keyboardType="decimal-pad"
           />
-          <InputRegister name="Peso" type="text" />
           <InputRegister
             name="Altura"
             type="text"
@@ -66,7 +62,7 @@ export default function Register() {
             keyboardType="decimal-pad"
           />
         </ContainerUnform>
-        <Next onPress={handleSubmit} activeOpacity={0.7}>
+        <Next onPress={registerUser} activeOpacity={0.7}>
           <NextLabel>Confirmar</NextLabel>
         </Next>
       </KeyboardAvoidingView>
